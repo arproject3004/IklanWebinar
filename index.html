@@ -3,32 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Iklan Webinar ATH</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <title>Flyer Iklan ATH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,800;0,900;1,400&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
         body { 
             margin: 0;
-            background-color: #050505; 
+            background-color: #030303; 
             font-family: 'Plus Jakarta Sans', sans-serif;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh; /* Bikin nge-pas di tengah layar HP */
+            min-height: 100vh;
         }
         
-        /* Bikin frame iklan otomatis jadi kotak (Feed IG) */
+        /* Container dibuat lebih tinggi (Flyer / IG Portrait style) */
         .ad-container {
             width: 100vw;
-            max-width: 500px;
-            aspect-ratio: 1 / 1; 
-            background: linear-gradient(135deg, #050505 0%, #0a0a0a 100%);
-            border: 1px solid rgba(56, 189, 248, 0.2);
+            max-width: 450px; /* Ukuran pas di HP */
+            background: linear-gradient(180deg, #050505 0%, #0f172a 100%);
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            padding: 8% 5% 12% 5%;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
@@ -40,112 +37,172 @@
             inset: 0;
             background-image: linear-gradient(rgba(56, 189, 248, 0.05) 1px, transparent 1px),
             linear-gradient(90deg, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
-            background-size: 20px 20px;
+            background-size: 25px 25px;
             z-index: 1;
         }
 
         .badge-live {
-            position: absolute;
-            top: 5%;
-            left: 5%;
             background: #ef4444;
             color: white;
-            font-size: 3vw;
+            font-size: 3.5vw;
             font-weight: 800;
-            padding: 1.5% 3.5%;
+            padding: 2% 4%;
             border-radius: 4px;
             letter-spacing: 1px;
             z-index: 2;
+            margin-bottom: 5%;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
         }
 
         .logo-img {
-            width: 35%;
+            width: 25%;
             aspect-ratio: 1/1;
             object-fit: cover;
             z-index: 2;
             border-radius: 50%;
             box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
-            margin-bottom: 4%;
+            margin-bottom: 5%;
         }
 
-        .text-content {
+        .content-wrapper {
             z-index: 2;
-            text-align: center;
-            width: 90%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 4vw;
         }
 
+        /* HOOK / JUDUL */
         h1 {
             color: #ffffff;
             font-size: 6.5vw;
             font-weight: 900;
-            line-height: 1.2;
-            margin: 0 0 2% 0;
+            line-height: 1.25;
+            margin: 0;
+            text-align: center;
             text-transform: uppercase;
-            letter-spacing: -0.5px;
+        }
+        h1 .red-text { color: #ef4444; }
+        h1 .blue-text { color: #38bdf8; }
+
+        /* PROBLEM BOX (Warna agak gelap/merah untuk pain point) */
+        .problem-box {
+            background: rgba(239, 68, 68, 0.05);
+            border-left: 3px solid #ef4444;
+            padding: 4% 5%;
+            border-radius: 0 8px 8px 0;
+        }
+        .problem-box p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 3.5vw;
+            line-height: 1.6;
+            margin: 0;
         }
 
-        h1 span { color: #ef4444; }
-        h1 .highlight { color: #38bdf8; }
-
-        .subtitle {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 3.2vw;
-            font-weight: 600;
-            margin-bottom: 6%;
-        }
-
-        .price-box {
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid #38bdf8;
+        /* SOLUTION BOX (Warna biru cerah untuk jalan keluar) */
+        .solution-box {
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 5%;
             border-radius: 8px;
-            padding: 3% 8%;
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            backdrop-filter: blur(5px);
+            text-align: center;
+        }
+        .solution-box p {
+            color: #ffffff;
+            font-size: 3.8vw;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .solution-box .highlight {
+            color: #38bdf8;
+            font-weight: 800;
         }
 
-        .price-normal {
+        /* CTA & HARGA */
+        .cta-section {
+            text-align: center;
+            margin-top: 2%;
+            background: rgba(3, 3, 3, 0.6);
+            padding: 6%;
+            border-radius: 12px;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+        }
+        .price-strike {
             color: rgba(255, 255, 255, 0.5);
-            font-size: 3vw;
+            font-size: 3.5vw;
             text-decoration: line-through;
             font-weight: 600;
+            margin-bottom: 1%;
         }
-
         .price-promo {
-            color: #38bdf8;
-            font-size: 6vw;
+            color: #10b981; /* Warna hijau profit */
+            font-size: 7vw;
             font-weight: 900;
-            margin-top: 1%;
-            letter-spacing: 1px;
+            margin: 2% 0;
+        }
+        .price-desc {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 3.2vw;
+            font-style: italic;
+            margin-bottom: 5%;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #0284c7, #38bdf8);
+            color: #030303;
+            font-weight: 800;
+            font-size: 4vw;
+            padding: 3% 6%;
+            border-radius: 30px;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
+            margin-top: 2%;
         }
 
-        /* Setingan khusus kalau dibuka di PC biar ukurannya gak meledak */
-        @media (min-width: 500px) {
+        /* Desktop view adjustment (biar ga raksasa kalau dibuka di PC) */
+        @media (min-width: 450px) {
             .badge-live { font-size: 14px; }
-            h1 { font-size: 32px; }
-            .subtitle { font-size: 16px; }
-            .price-normal { font-size: 14px; }
-            .price-promo { font-size: 26px; }
-            .logo-img { width: 160px; }
+            h1 { font-size: 28px; }
+            .problem-box p { font-size: 16px; }
+            .solution-box p { font-size: 17px; }
+            .price-strike { font-size: 16px; }
+            .price-promo { font-size: 32px; }
+            .price-desc { font-size: 14px; }
+            .cta-button { font-size: 16px; padding: 12px 24px; }
         }
     </style>
 </head>
 <body>
 
     <div class="ad-container">
-        <div class="badge-live">LIVE WEBINAR</div>
+        <div class="badge-live">WEBINAR ATH #1</div>
         
-        <!-- PASTIIN NAMA FILE GAMBAR LU SAMA PERSIS -->
+        <!-- PASTIKAN NAMA FILE LOGO SESUAI DENGAN YANG LU UPLOAD DI GITHUB -->
         <img src="IMG-20260621-WA0005.jpg" alt="Logo ATH" class="logo-img">
         
-        <div class="text-content">
-            <h1><span>STOP</span> MENEBAK <br><span class="highlight">ARAH MARKET!</span></h1>
-            <div class="subtitle">Pahami Logika Order Flow & Struktur Market.</div>
+        <div class="content-wrapper">
+            <!-- HOOK -->
+            <h1><span class="red-text">STOP TEBAK</span> ARAH MARKET KALAU MAU AKUN TRADING-MU <span class="blue-text">SELAMAT!</span></h1>
             
-            <div class="price-box">
-                <div class="price-normal">Normal: Rp 300.000</div>
-                <div class="price-promo">Rp 30.000</div>
+            <!-- PROBLEM -->
+            <div class="problem-box">
+                <p>Berapa kali Anda entry karena 'merasa' harga mau naik, tapi sedetik kemudian market malah terjun bebas? Trading dengan cara menebak sama saja dengan judi. <strong>Hasilnya? Jantung copot dan modal habis.</strong></p>
+            </div>
+
+            <!-- SOLUTION -->
+            <div class="solution-box">
+                <p>Market Forex itu punya pola dan logika yang bisa dibaca, bukan ditebak. Kami akan bongkar <span class="highlight">cara membaca struktur market secara objektif</span> dalam 1 jam saja.</p>
+            </div>
+
+            <!-- CALL TO ACTION & VALUE -->
+            <div class="cta-section">
+                <div class="price-strike">Normal: Rp 300.000</div>
+                <div class="price-promo">HANYA Rp 30.000</div>
+                <div class="price-desc">(Setara harga segelas kopi)</div>
+                <div style="color: #ffffff; font-size: 3.5vw; font-weight: 600; margin-top: 4%; line-height: 1.5;">
+                    🚀 Klik link di bio untuk amankan slot Anda sekarang sebelum harga naik!
+                </div>
+                <div class="cta-button">DAFTAR SEKARANG</div>
             </div>
         </div>
     </div>
