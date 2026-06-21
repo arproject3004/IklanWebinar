@@ -2,36 +2,38 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desain Iklan ATH</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Iklan Webinar ATH</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
         body { 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            background-color: #1a1a1a; 
             margin: 0;
+            background-color: #050505; 
             font-family: 'Plus Jakarta Sans', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Bikin nge-pas di tengah layar HP */
         }
         
-        /* Ukuran standar Feed Instagram (1080x1080 scale down) */
+        /* Bikin frame iklan otomatis jadi kotak (Feed IG) */
         .ad-container {
-            width: 400px;
-            height: 400px;
+            width: 100vw;
+            max-width: 500px;
+            aspect-ratio: 1 / 1; 
             background: linear-gradient(135deg, #050505 0%, #0a0a0a 100%);
             border: 1px solid rgba(56, 189, 248, 0.2);
             position: relative;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
 
-        /* Efek Grid di background biar kesan teknikal/charting dapet */
+        /* Garis-garis Charting Background */
         .ad-container::before {
             content: "";
             position: absolute;
@@ -42,56 +44,61 @@
             z-index: 1;
         }
 
-        /* Logo lu dimasukin ke sini */
+        .badge-live {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            background: #ef4444;
+            color: white;
+            font-size: 3vw;
+            font-weight: 800;
+            padding: 1.5% 3.5%;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            z-index: 2;
+        }
+
         .logo-img {
-            width: 160px;
-            height: 160px;
+            width: 35%;
+            aspect-ratio: 1/1;
             object-fit: cover;
-            margin-top: 25px;
             z-index: 2;
             border-radius: 50%;
             box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+            margin-bottom: 4%;
         }
 
         .text-content {
             z-index: 2;
             text-align: center;
-            width: 100%;
-            padding: 0 20px;
-            margin-top: 15px;
+            width: 90%;
         }
 
         h1 {
             color: #ffffff;
-            font-size: 24px;
+            font-size: 6.5vw;
             font-weight: 900;
             line-height: 1.2;
-            margin: 0 0 10px 0;
+            margin: 0 0 2% 0;
             text-transform: uppercase;
             letter-spacing: -0.5px;
         }
 
-        h1 span {
-            color: #ef4444; /* Merah untuk penekanan bahaya/stop */
-        }
-
-        h1 .highlight {
-            color: #38bdf8; /* Biru neon ciri khas web lu */
-        }
+        h1 span { color: #ef4444; }
+        h1 .highlight { color: #38bdf8; }
 
         .subtitle {
             color: rgba(255, 255, 255, 0.8);
-            font-size: 13px;
+            font-size: 3.2vw;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 6%;
         }
 
-        /* Box Harga Promo */
         .price-box {
             background: rgba(56, 189, 248, 0.1);
             border: 1px solid #38bdf8;
             border-radius: 8px;
-            padding: 10px 20px;
+            padding: 3% 8%;
             display: inline-flex;
             flex-direction: column;
             align-items: center;
@@ -100,32 +107,27 @@
 
         .price-normal {
             color: rgba(255, 255, 255, 0.5);
-            font-size: 12px;
+            font-size: 3vw;
             text-decoration: line-through;
             font-weight: 600;
         }
 
         .price-promo {
             color: #38bdf8;
-            font-size: 22px;
+            font-size: 6vw;
             font-weight: 900;
-            margin-top: 2px;
+            margin-top: 1%;
             letter-spacing: 1px;
         }
 
-        .badge-live {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: #ef4444;
-            color: white;
-            font-size: 10px;
-            font-weight: 800;
-            padding: 4px 8px;
-            border-radius: 4px;
-            letter-spacing: 1px;
-            z-index: 2;
-            box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+        /* Setingan khusus kalau dibuka di PC biar ukurannya gak meledak */
+        @media (min-width: 500px) {
+            .badge-live { font-size: 14px; }
+            h1 { font-size: 32px; }
+            .subtitle { font-size: 16px; }
+            .price-normal { font-size: 14px; }
+            .price-promo { font-size: 26px; }
+            .logo-img { width: 160px; }
         }
     </style>
 </head>
@@ -134,7 +136,7 @@
     <div class="ad-container">
         <div class="badge-live">LIVE WEBINAR</div>
         
-        <!-- MEMANGGIL FILE GAMBAR LU -->
+        <!-- PASTIIN NAMA FILE GAMBAR LU SAMA PERSIS -->
         <img src="IMG-20260621-WA0005.jpg" alt="Logo ATH" class="logo-img">
         
         <div class="text-content">
